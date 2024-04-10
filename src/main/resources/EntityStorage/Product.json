@@ -1,0 +1,64 @@
+[ {
+  "dataArt" : 1,
+  "name" : "Оправа Vogue VO5161",
+  "cost" : 10999,
+  "image" : "/static/img/Оправа1.png",
+  "link" : "/home",
+  "productCol" : 10
+}, {
+  "dataArt" : 2,
+  "name" : "Оправа Ray-Ban Aviator RB3025",
+  "cost" : 10500,
+  "image" : "/static/img/оправа2.png",
+  "link" : "/home",
+  "productCol" : 15
+}, {
+  "dataArt" : 3,
+  "name" : "Оправа Oakley OX5132",
+  "cost" : 17800,
+  "image" : "/static/img/оправа3.png",
+  "link" : "/home",
+  "productCol" : 13
+}, {
+  "dataArt" : 4,
+  "name" : "Оправа Prada PR 15VS",
+  "cost" : 32400,
+  "image" : "/static/img/оправа4.png",
+  "link" : "/home",
+  "productCol" : 9
+}, {
+  "dataArt" : 5,
+  "name" : "Оправа Gucci GG0061S",
+  "cost" : 23250,
+  "image" : "/static/img/оправа5.png",
+  "link" : "/home",
+  "productCol" : 21
+}, {
+  "dataArt" : 6,
+  "name" : "Поляризованные линзы",
+  "cost" : 15500,
+  "image" : "/static/img/линзы1.png",
+  "link" : "/home",
+  "productCol" : 17
+}, {
+  "dataArt" : 7,
+  "name" : "Линзы с защитой от ультрафиолета",
+  "cost" : 26900,
+  "image" : "/static/img/линзы2.png",
+  "link" : "/home",
+  "productCol" : 7
+}, {
+  "dataArt" : 8,
+  "name" : "Прозрачные линзы",
+  "cost" : 33250,
+  "image" : "/static/img/линзы3.png",
+  "link" : "/home",
+  "productCol" : 24
+}, {
+  "dataArt" : 9,
+  "name" : "Лунное Орбитальное",
+  "cost" : 20700,
+  "image" : "/static/img/линзы4.png",
+  "link" : "/home",
+  "productCol" : 2
+} ]

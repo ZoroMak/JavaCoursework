@@ -20,8 +20,8 @@ import java.util.Properties;
 
 
 @Service
-@Transactional
 @RequiredArgsConstructor
+@Transactional
 public class EmailService {
     private static final String USER_NAME = "zorov.ma@mail.ru";
     private static final String PASSWORD = "fzcajf6HS4FPxghFgvEp";
@@ -103,7 +103,6 @@ public class EmailService {
 
         return sb.toString();
     }
-
     private List<List<String>> generateColumns(Map<Integer, Integer> cart){
         List<List<String>> list = new ArrayList<>();
 

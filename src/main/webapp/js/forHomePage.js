@@ -172,11 +172,11 @@ function changeButtonColor(button) {
 
     if (basket[articul] == undefined){
         button.style.background =  'linear-gradient(to right, #800080, #ffc0cb)';
-        button.innerHTML = '<img alt="ошибка" src="/webapp/img/basket.png">';
+        button.innerHTML = '<img alt="ошибка" src="/img/basket.png">';
     }
     else{
         button.style.background = 'grey';
-        button.innerHTML = '<img alt="ошибка" src="/webapp/img/checkmark.png">';
+        button.innerHTML = '<img alt="ошибка" src="/img/checkmark.png">';
     }
 }
 

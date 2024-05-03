@@ -2,6 +2,7 @@ package org.example.coursework.clientService;
 
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.coursework.clientService.repo.PersistentSessionRepository;
 import org.example.coursework.model.PersistentSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
+@Transactional
 @RequiredArgsConstructor
 public class MySessionListener implements HttpSessionListener {
     private PersistentSessionRepository persistentSessionRepository;

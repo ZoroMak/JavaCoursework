@@ -19,7 +19,7 @@ public class DataController {
     private final CustomerService customerService;
     private final ProductService productService;
 
-    @PostMapping(value = "/basket")
+    @PostMapping(value = "/createOrder")
     public ResponseEntity<Void> sendData(@ModelAttribute Customer customer){
         customerService.save(customer);
         orderService.createOrder(customer, customer.getShoppingCart());

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optical House</title>
-    <link rel = "stylesheet" href = "/webapp/css/main.css">
+    <link rel = "stylesheet" href="/css/main.css">
 </head>
 <body>
 <div th:if="${param.error}">
@@ -23,7 +23,7 @@
     <input type="password" placeholder="Ваш пароль" name="password" id="psw" required>
 
     <button type="submit" class="btn">Вход</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
+    <a href="/"><button type="button" class="btn cancel"> Закрыть</button></a>
 
     <p>Нет профиля на нашем сайте</p>
     <p class="reg"><a href="/regist"

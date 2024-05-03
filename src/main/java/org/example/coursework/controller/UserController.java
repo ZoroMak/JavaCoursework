@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/regist")
+    @PostMapping(value = "/registUser")
     public void createUser(HttpServletResponse response,
             @RequestParam("name") String name,
             @RequestParam("surname") String surname,
@@ -34,6 +34,6 @@ public class UserController {
         }
 
         userService.createUser(name, surname, email, password, dateOfBirth);
-        response.sendRedirect("/home");
+        response.sendRedirect("/");
     }
 }

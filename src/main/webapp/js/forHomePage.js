@@ -130,7 +130,7 @@ function generateProductList(page_number, countPerPage) {
         out += '<p>'+sortedCart[i]['name']+'</p>';
         out += '<div class="toy">';
         out += '<p><b>'+toCurrency(sortedCart[i]['cost'])+'</b></p>'
-        out += '<button dataArt="'+sortedCart[i]['dataArt']+'" class="buy" onclick="changeButtonColor(this)"><img alt="ошибка" src="/static/img/basket.png"></button>';
+        out += '<button dataArt="'+sortedCart[i]['dataArt']+'" class="buy" onclick="changeButtonColor(this)"><img alt="ошибка" src="/webapp/img/basket.png"></button>';
         out += '</div>';
         out += '</div>';
         out += '</li>';
@@ -172,11 +172,11 @@ function changeButtonColor(button) {
 
     if (basket[articul] == undefined){
         button.style.background =  'linear-gradient(to right, #800080, #ffc0cb)';
-        button.innerHTML = '<img alt="ошибка" src="/static/img/basket.png">';
+        button.innerHTML = '<img alt="ошибка" src="/webapp/img/basket.png">';
     }
     else{
         button.style.background = 'grey';
-        button.innerHTML = '<img alt="ошибка" src="/static/img/checkmark.png">';
+        button.innerHTML = '<img alt="ошибка" src="/webapp/img/checkmark.png">';
     }
 }
 

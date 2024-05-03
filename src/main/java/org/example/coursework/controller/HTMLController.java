@@ -49,7 +49,7 @@ public class HTMLController {
 
     @GetMapping("/static/css/{name}")
     public byte[] getCSS(@PathVariable String name) throws IOException {
-        Resource resource = new ClassPathResource("/static/css/" + name);
+        Resource resource = new ClassPathResource("/webapp/css/" + name);
         try (InputStream inputStream = resource.getInputStream()) {
             return inputStream.readAllBytes();
         }
@@ -57,7 +57,7 @@ public class HTMLController {
 
     @GetMapping("/static/img/{name}")
     public ResponseEntity<byte[]> getImage(@PathVariable String name) throws IOException {
-        Resource resource = new ClassPathResource("/static/img/" + name);
+        Resource resource = new ClassPathResource("/webapp/img/" + name);
         try (InputStream inputStream = resource.getInputStream()) {
             byte[] imageBytes = inputStream.readAllBytes();
             HttpHeaders headers = new HttpHeaders();
@@ -68,7 +68,7 @@ public class HTMLController {
 
     @GetMapping("/static/js/{name}")
     public ResponseEntity<byte[]> getJS(@PathVariable String name) throws IOException {
-        Resource resource = new ClassPathResource("/static/js/" + name);
+        Resource resource = new ClassPathResource("/webapp/js/" + name);
         try (InputStream inputStream = resource.getInputStream()) {
             byte[] jsBytes = inputStream.readAllBytes();
             HttpHeaders headers = new HttpHeaders();

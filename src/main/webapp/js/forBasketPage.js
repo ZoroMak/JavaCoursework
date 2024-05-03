@@ -38,7 +38,7 @@ function showGoods(){
         out += '<p id='+str+' class="quantity">'+basketCount[key]+'</p>'
         out += '<button class="plus" dataArt='+key+'>+</button>'
         out += '</div>';
-        out +=  '<button class="delete" dataArt='+key+'><img alt="" src="/static/img/rubbishbin.png"></button>';
+        out +=  '<button class="delete" dataArt='+key+'><img alt="" src="/webapp/img/rubbishbin.png"></button>';
         out += '</div>';
         out += '</div>';
         out += '</li>';

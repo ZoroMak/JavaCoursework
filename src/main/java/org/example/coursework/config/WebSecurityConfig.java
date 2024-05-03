@@ -43,8 +43,7 @@ public class WebSecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(authorize -> authorize
-                        .requestMatchers("/home/*", "/home", "/regist", "/static/**", "/product", "/getData", "/getLength").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/basket").authenticated()
                 ).formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()

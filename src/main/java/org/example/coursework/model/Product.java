@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table(schema = "javaschema", name = "product")
 @Getter
 @Setter
-public class Product {
+public class Product implements Comparable<Product>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dataArt")
@@ -19,4 +19,10 @@ public class Product {
     private String link;
     @Column(name = "productcol")
     private int productCol;
+
+
+    @Override
+    public int compareTo(Product o) {
+        return Integer.compare(this.cost, o.cost);
+    }
 }

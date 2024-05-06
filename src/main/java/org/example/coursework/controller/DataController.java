@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class DataController {
@@ -30,6 +32,14 @@ public class DataController {
     public ResponseEntity<Page<Product>> getData(@RequestParam("page_number") int page_number,
                                                  @RequestParam("countPerPage") int countPerPage){
         Page<Product> productList = productService.findProductsByPage(page_number, countPerPage);
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+    @GetMapping("/getSortedData")
+    public ResponseEntity<List<Product>> getSortedData(@RequestParam("page_number") int page_number,
+                                                       @RequestParam("countPerPage") int countPerPage,
+                                                       @RequestParam boolean value){
+        List<Product> productList = productService.getSortedProduct(page_number, countPerPage, value);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 

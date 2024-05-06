@@ -115,7 +115,7 @@ form.addEventListener("submit", function(event) {
 
     var formData = new FormData(form);
 
-    fetch("/basket", {
+    fetch("/createOrder", {
         method: "POST",
         body: formData // Передаем данные из формы в теле запроса
     })

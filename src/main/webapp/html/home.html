@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кубик в кубе</title>
     <!--<link rel = "icon" type = "images/x-icon" href = "img/icon.ico">-->
-    <link rel = "stylesheet" href="/css/main.css">
+    <link rel = "stylesheet" type="text/css" href="/css/main.css">
 </head>
 
 <body>
@@ -90,7 +90,7 @@
                     </select>
                 </div>
 
-                <select name="typeSorting" id="typeSorting">
+                <select name="typeSorting" id="typeSorting" onchange="sortCart()">
                     <option value="usually">По умолчанию</option>
                     <option value="increase">По возрастанию</option>
                     <option value="decrease">По убыванию</option>

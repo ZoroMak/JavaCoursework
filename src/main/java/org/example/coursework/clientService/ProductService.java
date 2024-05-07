@@ -26,30 +26,19 @@ public class ProductService {
         return productRepository.findAll();
     }
     @Transactional
-    public Page<Product> findProductsByPage(int pageNumber, int pageSize) {
+    public Page<Product> findProductsByPage(int pageNumber, int pageSize, String searchValue) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return productRepository.findAll(pageable);
+        return productRepository.findItemsByNameContainingIgnoreCase(searchValue, pageable);
     }
     @Transactional
-    public List<Product> getSortedProduct(int pageNumber, int pageSize, boolean value){
-        List<Product> list = productRepository.findAll();
+    public Page<Product> getSortedProduct(int pageNumber, int pageSize, boolean value, String searchValue){
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
-        if (list.isEmpty())
-            return null;
-
-        Collections.sort(list);
-
-        if (!value){
-            Collections.reverse(list);
-        }
-
-        int startIndex = pageNumber * pageSize;
-        int endIndex = Math.min(startIndex + pageSize, list.size());
-
-        return list.subList(startIndex, endIndex);
+        return value ? productRepository.findProductsByNameContainingIgnoreCaseSortedByCost(searchValue, pageable)
+                : productRepository.findProductsByNameContainingIgnoreCaseSortedByCostDesc(searchValue, pageable);
     }
     @Transactional
-    public long getTotalProductCount() {
-        return productRepository.count();
+    public long getTotalProductCount(String searchValue) {
+        return productRepository.countProductsByNameContainingIgnoreCase(searchValue);
     }
 }

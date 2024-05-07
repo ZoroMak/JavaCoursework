@@ -11,12 +11,16 @@ $(document).ready(function(){
 
 function getTotalLength() {
     let url = '/getLength';
+    let search_value = document.getElementById("searchInput").value
+
     $.ajax({
         url: url,
         type: 'GET',
         async: false,
         contentType: 'application/json;charset=UTF-8',
+        data: {search_value: search_value},
         success: function (response) {
+            console.log(response)
             length = response
         }
     });
@@ -53,26 +57,30 @@ function sortCart() {
 
 function loadSortedData(page_number, countPerPage, value){
     let url = '/getSortedData';
+    let search_value = document.getElementById("searchInput").value
+
     $.ajax({
         url: url,
         type: 'GET',
         async: false,
         contentType: 'application/json;charset=UTF-8',
-        data: {page_number: page_number, countPerPage: countPerPage, value: value},
+        data: {page_number: page_number, countPerPage: countPerPage, value: value, search_value: search_value},
         success: function (response) {
-            cart = response;
+            cart = response.content;
         }
     });
 }
 
 function loadData(page_number, countPerPage) {
     let url = '/getData';
+    let search_value = document.getElementById("searchInput").value
+
     $.ajax({
         url: url,
         type: 'GET',
         async: false,
         contentType: 'application/json;charset=UTF-8',
-        data: {page_number: page_number, countPerPage: countPerPage},
+        data: {page_number: page_number, countPerPage: countPerPage, search_value: search_value},
         success: function (response) {
             cart = response.content;
         }

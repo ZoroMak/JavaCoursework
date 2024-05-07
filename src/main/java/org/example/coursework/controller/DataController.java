@@ -30,22 +30,25 @@ public class DataController {
 
     @GetMapping("/getData")
     public ResponseEntity<Page<Product>> getData(@RequestParam("page_number") int page_number,
-                                                 @RequestParam("countPerPage") int countPerPage){
-        Page<Product> productList = productService.findProductsByPage(page_number, countPerPage);
+                                                 @RequestParam("countPerPage") int countPerPage,
+                                                 @RequestParam("search_value") String searchValue){
+        Page<Product> productList = productService.findProductsByPage(page_number, countPerPage, searchValue);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
     @GetMapping("/getSortedData")
-    public ResponseEntity<List<Product>> getSortedData(@RequestParam("page_number") int page_number,
+    public ResponseEntity<Page<Product>> getSortedData(@RequestParam("page_number") int page_number,
                                                        @RequestParam("countPerPage") int countPerPage,
-                                                       @RequestParam boolean value){
-        List<Product> productList = productService.getSortedProduct(page_number, countPerPage, value);
+                                                       @RequestParam boolean value,
+                                                       @RequestParam("search_value") String searchValue){
+        Page<Product> productList = productService.getSortedProduct(page_number, countPerPage, value, searchValue);
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
     @GetMapping("/getLength")
-    public ResponseEntity<Long> getLength(){
-        Long length = productService.getTotalProductCount();
+    public ResponseEntity<Long> getLength(@RequestParam("search_value") String searchValue){
+        System.out.println(searchValue);
+        Long length = productService.getTotalProductCount(searchValue);
         return new ResponseEntity<>(length, HttpStatus.OK);
     }
 }

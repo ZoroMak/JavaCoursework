@@ -8,7 +8,8 @@ group = 'org.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+	sourceCompatibility = JavaVersion.toVersion("17")
+	targetCompatibility = JavaVersion.toVersion("17")
 }
 
 configurations {
@@ -67,5 +68,16 @@ sourceSets {
 		resources {
 			srcDirs = ['src/main/resources', 'src/main/webapp']
 		}
+	}
+}
+
+javadoc {
+	options {
+		encoding 'UTF-8'
+		charSet 'UTF-8'
+		author true
+		version true
+		links "https://docs.oracle.com/javase/8/docs/api/"
+		tags 'author:a:Author:', 'version:v:Version:', 'param:p:Parameter:', 'return:r:Return:'
 	}
 }

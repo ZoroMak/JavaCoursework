@@ -36,8 +36,8 @@ CREATE TABLE `customers` (
   `promocode` varchar(45) DEFAULT NULL,
   `total_price` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idx_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+  UNIQUE KEY `idx_email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,33 +46,8 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'zorov.ma@mail.ru','Максим','Зоров','+79861961173','123','',NULL,'',103999),(2,'zorov.ma@mail.ru','Максим','Зоров','+79861961173','123','',NULL,'',34249),(3,'zorov.ma@mail.ru','Максим','Зоров','+79861961173','123','',NULL,'',34249),(4,'zorov.ma@mail.ru','Максим','Зоров','+79861961173','123','',NULL,'',34249);
+INSERT INTO `customers` VALUES (1,'zorov.ma@mail.ru','Максим','Зоров','+79861961173','123','',NULL,'',103999);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `manufactures`
---
-
-DROP TABLE IF EXISTS `manufactures`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `manufactures` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `manufactures`
---
-
-LOCK TABLES `manufactures` WRITE;
-/*!40000 ALTER TABLE `manufactures` DISABLE KEYS */;
-INSERT INTO `manufactures` VALUES (1,'fverve','ergeg'),(2,'ertg4g','rgbrtrgr');
-/*!40000 ALTER TABLE `manufactures` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -91,7 +66,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `customer_idx` (`user_email`),
   CONSTRAINT `customer` FOREIGN KEY (`user_email`) REFERENCES `customers` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +75,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'zorov.ma@mail.ru',1,1,10999),(2,'zorov.ma@mail.ru',5,1,23250),(3,'zorov.ma@mail.ru',1,1,10999),(4,'zorov.ma@mail.ru',5,1,23250),(5,'zorov.ma@mail.ru',1,1,10999),(6,'zorov.ma@mail.ru',5,1,23250);
+INSERT INTO `orders` VALUES (1,'zorov.ma@mail.ru',1,1,10999),(2,'zorov.ma@mail.ru',5,1,23250),(3,'zorov.ma@mail.ru',1,1,10999),(4,'zorov.ma@mail.ru',5,1,23250),(5,'zorov.ma@mail.ru',1,1,10999),(6,'zorov.ma@mail.ru',5,1,23250),(7,'zorov.ma@mail.ru',1,5,54995),(8,'zorov.ma@mail.ru',3,1,17800);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +120,8 @@ CREATE TABLE `product` (
   `image` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   `productcol` int NOT NULL,
-  PRIMARY KEY (`dataArt`)
+  PRIMARY KEY (`dataArt`),
+  FULLTEXT KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -155,7 +131,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Оправа Vogue VO5161',10999,'/static/img/Оправа1.png','/home',10),(2,'Оправа Ray-Ban Aviator RB3025',10500,'/static/img/оправа2.png','/home',15),(3,'Оправа Oakley OX5132',17800,'/static/img/оправа3.png','/home',13),(4,'Оправа Prada PR 15VS',32400,'/static/img/оправа4.png','/home',9),(5,'Оправа Gucci GG0061S',23250,'/static/img/оправа5.png','/home',21),(6,'Поляризованные линзы',15500,'/static/img/линзы1.png','/home',17),(7,'Линзы с защитой от ультрафиолета',26900,'/static/img/линзы2.png','/home',7),(8,'Прозрачные линзы',33250,'/static/img/линзы3.png','/home',24),(9,'Лунное Орбитальное',20700,'/static/img/линзы4.png','/home',2);
+INSERT INTO `product` VALUES (1,'Оправа Vogue VO5161',10999,'/img/Оправа1.png','/home',10),(2,'Оправа Ray-Ban Aviator RB3025',10500,'/img/оправа2.png','/home',15),(3,'Оправа Oakley OX5132',17800,'/img/оправа3.png','/home',13),(4,'Оправа Prada PR 15VS',32400,'/img/оправа4.png','/home',9),(5,'Оправа Gucci GG0061S',23250,'/img/оправа5.png','/home',21),(6,'Поляризованные линзы',15500,'/img/линзы1.png','/home',17),(7,'Линзы с защитой от ультрафиолета',26900,'/img/линзы2.png','/home',7),(8,'Прозрачные линзы',33250,'/img/линзы3.png','/home',24),(9,'Лунное Орбитальное',20700,'/img/линзы4.png','/home',2);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,35 +163,6 @@ LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES (10,'Максим','Зоров','zorov.ma@mail.ru','$2a$10$4ZiQRlArEfb3NMREWM0Aiu6kUx.KlTV1jJ7OhyyLP250bdns8jwgC','2004-04-04','ROLE_USER'),(11,'Максим','Зоров','rfr@daerfw.wd','$2a$10$/tO.0dabibOOfqcdUPFCPOE5400NN.b2xmHPfY2PsR5RkdaQ6dXYG','2004-04-04','ROLE_USER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `workers`
---
-
-DROP TABLE IF EXISTS `workers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `workers` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) NOT NULL,
-  `second_name` varchar(45) NOT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `manufacture_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `manufactures_idx` (`manufacture_id`),
-  CONSTRAINT `manufactures` FOREIGN KEY (`manufacture_id`) REFERENCES `manufactures` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `workers`
---
-
-LOCK TABLES `workers` WRITE;
-/*!40000 ALTER TABLE `workers` DISABLE KEYS */;
-INSERT INTO `workers` VALUES (1,'Maxim','Zorov','Aleksandrovich',1),(2,'Maxim','Zorov','Aleksandrovich',1),(3,'Petr','Ivanov','Petrovich',2),(4,'Egor','Zorov','Alexandrovich',2),(27,'Рахимов','Юнель','',2),(28,'вамыам','фымфм','фамфк',1),(29,'вамыам','фымфм','фамфк',1);
-/*!40000 ALTER TABLE `workers` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -226,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-06 20:16:51
+-- Dump completed on 2024-09-11  9:33:06

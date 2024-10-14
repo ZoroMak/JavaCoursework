@@ -1,10 +1,11 @@
 package org.example.coursework.clientService;
 
-import jakarta.transaction.Transactional;
 import org.example.coursework.clientService.repo.CustomerRepository;
 import org.example.coursework.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -17,6 +18,11 @@ public class CustomerService {
     }
 
     public void save(Customer customer){
-        customerRepository.save(customer);
+        if (findByID(customer).isEmpty())
+            customerRepository.save(customer);
+    }
+
+    public Optional<Customer> findByID(Customer customer) {
+        return customerRepository.findById(customer.getId());
     }
 }

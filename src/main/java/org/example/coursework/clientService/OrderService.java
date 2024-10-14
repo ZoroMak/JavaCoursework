@@ -24,6 +24,7 @@ public class OrderService {
     private final ObjectMapper objectMapper;
 
     public void createOrder(Customer customer, String shoppingCart){
+
         Map<Integer, Integer> cart = getMap(shoppingCart);
 
         assert cart != null;

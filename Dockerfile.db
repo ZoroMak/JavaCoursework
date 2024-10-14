@@ -1,4 +1,6 @@
 FROM mysql:latest
 
-COPY src/main/resources/init.sql /docker-entrypoint-initdb.d/
+ADD src/main/resources/new_init.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
 

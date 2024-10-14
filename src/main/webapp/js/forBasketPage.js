@@ -99,6 +99,7 @@ function showPrice(articular){
     $('.price').html(toCurrency(total))
 
     totalPriceField.value = total;
+    shoppingCart.value = JSON.stringify(basketCount);
 }
 
 function checkCart(){

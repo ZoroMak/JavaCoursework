@@ -83,6 +83,7 @@ function loadData(page_number, countPerPage) {
         data: {page_number: page_number, countPerPage: countPerPage, search_value: search_value},
         success: function (response) {
             cart = response.content;
+            console.log(response.content)
         }
     });
 }
@@ -165,13 +166,15 @@ function toCurrency(num) {
 //Добавление в корзину с помощью localStorage
 function addToCart(){
     let articular = $(this).attr('dataArt')
-
-    if (articular === undefined)
+    if (articular == undefined)
         return;
 
-    if (basket[articular] === undefined) {
+    console.log(cart)
+
+
+    if (basket[articular] == undefined) {
         for (let i = 0; i < Object.keys(cart).length; i++) {
-            if (cart[i]['dataArt'] === articular) {
+            if (cart[i]['dataArt'] == articular) {
                 basket[articular] = cart[i];
                 basketCount[articular] = 1;
                 found = true;

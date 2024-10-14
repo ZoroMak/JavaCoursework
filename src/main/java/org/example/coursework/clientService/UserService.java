@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService{
     private final UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);

@@ -20,11 +20,11 @@
                 <ul class="header_list">
                     <li><a href="/">Каталог</a></li>
                     <li><a href="information.html">О нас</a></li>
-                    <li class="basket"><a href="/basket">Корзина</a></li>
+                    <li class="basket"><a href="/basket"  id="basketLink">Корзина</a></li>
                     <li><a href="tel:89860040404">8 986 004 04 04</a></li>
                     <li><button class="enter_button" onclick="openForm()">Войти</button>
                         <div class="form-popup" id="myForm">
-                            <form action="../action_page.php" class="form-container" th:action="@{/login}" method="post">
+                            <form id ="loginForm" action="../action_page.php" class="form-container" th:action="@{/login}" method="post">
                                 <h1>Вход</h1>
 
                                 <label for="email"><b>Почта</b></label>
@@ -33,7 +33,7 @@
                                 <label for="psw"><b>Пароль</b></label>
                                 <input type="password" placeholder="Ваш пароль" name="password" id="psw" required>
 
-                                <button type="submit" class="btn">Вход</button>
+                                <button type="button" onclick="authorization()" class="btn">Вход</button>
                                 <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
 
                                 <p>Нет профиля на нашем сайте</p>

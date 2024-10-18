@@ -1,8 +1,10 @@
 package org.example.coursework;
 
-import org.example.coursework.clientService.AuthenticationService;
-import org.example.coursework.clientService.repo.UserRepository;
-import org.example.coursework.model.User;
+
+import org.example.coursework.auth.service.AuthenticationService;
+import org.example.coursework.auth.service.UserService;
+import org.example.coursework.database.model.ApplicationUser;
+import org.example.coursework.database.repo.ApplicationUserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,18 +24,18 @@ import static org.mockito.Mockito.when;
 public class AuthenticationServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private ApplicationUserRepository userRepository;
 
     @InjectMocks
-    private AuthenticationService authenticationService;
+    private UserService userService;
 
     @Test
     public void testLoadUserByUsername_UserFound() {
-        User user = new User();
+        ApplicationUser user = new ApplicationUser();
         user.setEmail("test@example.com");
         when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
 
-        UserDetails userDetails = authenticationService.loadUserByUsername("test@example.com");
+        UserDetails userDetails = userService.loadUserByUsername("test@example.com");
 
         assertNotNull(userDetails);
         assertEquals("test@example.com", userDetails.getUsername());
@@ -43,6 +45,6 @@ public class AuthenticationServiceTest {
     public void testLoadUserByUsername_UserNotFound() {
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
-        authenticationService.loadUserByUsername("nonexistent@example.com");
+        userService.loadUserByUsername("nonexistent@example.com");
     }
 }

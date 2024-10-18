@@ -72,6 +72,7 @@ function plusGoods(){
 function minusGoods(){
     let articular = $(this).attr('dataArt');
     basketCount[articular]--;
+    localStorage.setItem('basketCount', JSON.stringify(basketCount));
     total -= basket[articular]['cost'];
     showPrice(articular);
 
@@ -113,24 +114,41 @@ let form = document.getElementById("basketForm");
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
+    console.log("Создание заказа")
+    const token = localStorage.getItem('jwtToken');
 
-    var formData = new FormData(form);
+    let formData = new FormData(form);
+    let formDataJson = {};
+    for (let [key, value] of formData.entries()) {
+        formDataJson[key] = value;
+    }
 
-    fetch("/createOrder", {
-        method: "POST",
-        body: formData // Передаем данные из формы в теле запроса
-    })
-        .then(response => {
-            if (response.ok) {
-                console.log("Данные успешно отправлены на сервер");
+    let config = {
+        method: 'post',
+        url: `/createOrder`,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+        data: formDataJson
+
+    }
+    console.log(formDataJson)
+    axios.request(config)
+        .then(r => {
+            console.log("dcec");
+            console.log(r.status);
+            if (r.status === 200) {
+                console.log("Заказ создан")
                 localStorage.removeItem('basketCount');
                 localStorage.removeItem('basket');
                 location.reload();
             } else {
-                console.error("Произошла ошибка при отправке данных на сервер");
+                console.log("Произошла ошибка при отправке данных на сервер при создании заказа");
+                window.location.href = '/loginPage'
             }
         })
         .catch(error => {
-            console.error("Ошибка при отправке данных на сервер:", error);
+        console.error("Ошибка при отправке данных на сервер: ", error);
+        window.location.href = '/loginPage';
         });
 });

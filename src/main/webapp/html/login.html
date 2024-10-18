@@ -13,7 +13,7 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-<form action="../action_page.php" class="form-container" th:action="@{/login}" method="post">
+<form id = "loginForm" action="../action_page.php" class="form-container" th:action="@{/login}" method="post">
     <h1>Вход</h1>
 
     <label for="email"><b>Почта</b></label>
@@ -22,12 +22,13 @@
     <label for="psw"><b>Пароль</b></label>
     <input type="password" placeholder="Ваш пароль" name="password" id="psw" required>
 
-    <button type="submit" class="btn">Вход</button>
+    <button type="button" onclick="authorization()" class="btn">Вход</button>
     <a href="/"><button type="button" class="btn cancel"> Закрыть</button></a>
 
     <p>Нет профиля на нашем сайте</p>
     <p class="reg"><a href="/regist"
                       target = "_blank">Зарегистрироваться</a></p>
 </form>
+<script src="/js/script.js"></script>
 </body>
 </html>
